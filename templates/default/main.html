@@ -27,7 +27,9 @@
             </span>
             <h2 class="download">
                 {{~entry.book.preferedData:data:j}}
-                 <a href="{{=data.url}}" {{=it.c.config.kindleHack}}>{{=data.name}}</a><br />
+                 <a href="{{=data.url}}" {{=it.c.config.kindleHack}}><i class="fas fa-download"></i> {{=data.name}}</a>
+                 <a href="{{=data.viewUrl}}" {{=it.c.config.kindleHack}}><i class="fas fa-folder-open fa-lg"></i></a>
+                 <br />
                 {{~}}
             </h2>
             <a class="fancydetail" href="{{=str_format (it.c.url.detailUrl, entry.book.id, it.databaseId)}}" {{=it.c.config.kindleHack}}>

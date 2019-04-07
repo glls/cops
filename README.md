@@ -62,10 +62,7 @@ On Centos you may have to add :
 3.  Edit config_local.php to match your config.
 4.  If needed add other configuration item from config_default.php
 
-If you like Docker, you can also try these docker containers.
-[x64](https://hub.docker.com/r/linuxserver/cops/)
-[armhf](https://hub.docker.com/r/lsioarmhf/cops)
-[arm64](https://hub.docker.com/r/lsioarmhf/cops-aarch64/)
+If you like Docker, you can also try this multiarch docker container from [linuxserver.io](https://hub.docker.com/r/linuxserver/cops/)  It has builds for x64, armhf and arm64. 
 
 # Install from sources
 
@@ -116,6 +113,7 @@ I only have one limit (I may have more but that one is the worse) : COPS' goal i
  * The unofficial OPDS validator : http://opds-validator.appspot.com/
  * Thanks to all testers, translators and contributors.
  * Feed icons made by Freepik from Flaticon website licensed under Creative Commons BY 3.0 http://www.flaticon.com and http://www.freepik.com
+ * A huge thanks to Jetbrains for supporting COPS by providing a set of free licenses to their products for several years now!
 
 External libraries used :
  * JQuery : http://jquery.com/
@@ -128,7 +126,7 @@ External libraries used :
 
 # Copyright & License
 
-COPS - 2012-2017 (c) Sébastien Lucas
+COPS - 2012-2018 (c) Sébastien Lucas
 
 See COPYING and file headers for license info
 

@@ -3,7 +3,7 @@
  * COPS (Calibre OPDS PHP Server)
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     SÃ©bastien Lucas <sebastien@slucas.fr>
+ * @author     Sébastien Lucas <sebastien@slucas.fr>
  */
 
     require_once dirname(__FILE__) . '/config.php';
@@ -21,11 +21,13 @@
 
     $expires = 60*60*24*14;
     header('Pragma: public');
-    header('Cache-Control: maxage=' . $expires);
+    header('Cache-Control: max-age=' . $expires);
     header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$expires) . ' GMT');
-    $bookId = getURLParam('id', NULL);
-    $type   = getURLParam('type', 'jpg');
-    $idData = getURLParam('data', NULL);
+    $bookId   = getURLParam('id', NULL);
+    $type     = getURLParam('type', 'jpg');
+    $idData   = getURLParam('data', NULL);
+    $viewOnly = getURLParam('view', FALSE);
+
     if (is_null($bookId)) {
         $book = Book::getBookByDataId($idData);
     } else {
@@ -97,12 +99,14 @@
             break;
     }
     $file = $book->getFilePath($type, $idData, true);
-    if ($type == 'epub' && $config['cops_update_epub-metadata']) {
+    if (!$viewOnly && $type == 'epub' && $config['cops_update_epub-metadata']) {
         $book->getUpdatedEpub($idData);
         return;
     }
     if ($type == 'jpg') {
         header('Content-Disposition: filename="' . basename($file) . '"');
+    } elseif ($viewOnly) {
+        header('Content-Disposition: inline');
     } else {
         header('Content-Disposition: attachment; filename="' . basename($file) . '"');
     }
